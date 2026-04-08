@@ -21,6 +21,7 @@ public class Utils {
         return inv;
     }
     
+    // MCD
     public static int gcd(int x, int y) {
         while(y != 0) {
             int temp = y;

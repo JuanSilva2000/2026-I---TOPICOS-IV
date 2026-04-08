@@ -1,6 +1,7 @@
 pe\edu\uni\fc\cc\substitution\AfineCipher.class
-pe\edu\uni\fc\cc\substitution\App\MainAfineCipher.class
+pe\edu\uni\fc\cc\substitution\SustitutionCipher.class
 pe\edu\uni\fc\cc\substitution\CeaserCipher.class
 pe\edu\uni\fc\cc\substitution\App\MainCeaserCipher.class
 pe\edu\uni\fc\cc\substitution\service\AfineCipherService.class
+pe\edu\uni\fc\cc\substitution\App\MainAfineCipher.class
 pe\edu\uni\fc\cc\substitution\service\CeaserCipherService.class
