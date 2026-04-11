@@ -4,6 +4,9 @@
  */
 package pe.edu.uni.fc.cc.common;
 
+import java.security.SecureRandom;
+import java.util.HexFormat;
+
 /**
  *
  * @author JUAN
@@ -30,5 +33,17 @@ public class Utils {
         }
         return x;
     }
+ 
+    public static String byteToHex(byte[] bytes){
+        return HexFormat.of().withUpperCase().withDelimiter(" ").formatHex(bytes);
+    }
     
+    public static byte[] generateIV(int length) {
+        byte[] initVector = new byte[length];
+        SecureRandom sr = new SecureRandom();
+        sr.nextBytes(initVector);
+        
+        return initVector;
+    }
+
 }

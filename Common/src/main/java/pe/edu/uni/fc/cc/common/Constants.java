@@ -10,4 +10,8 @@ package pe.edu.uni.fc.cc.common;
  */
 public class Constants {
      public static final int ALPHABET_SET_SIZE = 26;
+     public static final String AES_ALGORITHM = "AES";
+     public static final String TRANSFORMATION_AES_CBC = "AES/CBC/PKCS5Padding";
+     
+     public static final int AES_CBC_IV_LENGTH = 16;
 }

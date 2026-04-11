@@ -8,6 +8,7 @@
     <modules>
         <module>Common</module>
         <module>Substitution</module>
+        <module>Symmetric</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
