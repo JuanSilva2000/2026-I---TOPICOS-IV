@@ -13,6 +13,7 @@ public class Constants {
      public static final String AES_ALGORITHM = "AES";
      public static final String TRANSFORMATION_AES_CBC = "AES/CBC/PKCS5Padding";
      public static final String TRANSFORMATION_AES_GCM = "AES/GCM/NoPadding";
+     public static final String SHA_256_ALGORITHM = "SHA-256";
      
      public static final int AES_CBC_IV_LENGTH = 16;
      public static final int AES_GCM_IV_LENGTH = 12;
