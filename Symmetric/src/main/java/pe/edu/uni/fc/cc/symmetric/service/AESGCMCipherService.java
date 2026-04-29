@@ -14,7 +14,6 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.GCMParameterSpec;
-import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import static pe.edu.uni.fc.cc.common.Constants.AES_ALGORITHM;
 import static pe.edu.uni.fc.cc.common.Constants.AES_GCM_IV_LENGTH;
@@ -53,17 +52,7 @@ public class AESGCMCipherService {
             
             result = Base64.getEncoder().encodeToString(ciphered);
                    
-        } catch (NoSuchAlgorithmException ex) {
-            System.getLogger(AESGCMCipherService.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        } catch (NoSuchPaddingException ex) {
-            System.getLogger(AESGCMCipherService.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        } catch (InvalidKeyException ex) {
-            System.getLogger(AESGCMCipherService.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        } catch (InvalidAlgorithmParameterException ex) {
-            System.getLogger(AESGCMCipherService.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        } catch (IllegalBlockSizeException ex) {
-            System.getLogger(AESGCMCipherService.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        } catch (BadPaddingException ex) {
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException ex) {
             System.getLogger(AESGCMCipherService.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
         
