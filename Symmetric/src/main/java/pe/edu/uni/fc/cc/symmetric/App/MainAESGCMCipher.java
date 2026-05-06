@@ -5,6 +5,7 @@
 package pe.edu.uni.fc.cc.symmetric.App;
 
 import java.security.SecureRandom;
+import static pe.edu.uni.fc.cc.common.Constants.AES_GCM_ADD;
 import static pe.edu.uni.fc.cc.common.Constants.AES_GCM_IV_LENGTH;
 import pe.edu.uni.fc.cc.common.Utils;
 import pe.edu.uni.fc.cc.symmetric.service.AESGCMCipherService;
@@ -25,12 +26,12 @@ public class MainAESGCMCipher {
         AESGCMCipherService aes_gcm = new AESGCMCipherService(key);
         
         byte[] iv = Utils.generateIV(AES_GCM_IV_LENGTH);
-        byte[] add = "Header".getBytes();
+        //byte[] add = "Header".getBytes();
         
         String msg = "This is a message";
         
-        String encrypted = aes_gcm.encrypt(msg, iv,add);
-        String decrypted = aes_gcm.decrypt(encrypted, add);
+        String encrypted = aes_gcm.encrypt(msg, iv, AES_GCM_ADD);
+        String decrypted = aes_gcm.decrypt(encrypted, AES_GCM_ADD);
         
         System.out.println("Original: " + msg);
         System.out.println("Encrypted: " + encrypted);

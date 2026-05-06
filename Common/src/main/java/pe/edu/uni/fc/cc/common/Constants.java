@@ -16,6 +16,7 @@ public class Constants {
      public static final String TRANSFORMATION_AES_GCM = "AES/GCM/NoPadding";
      public static final String SHA_256_ALGORITHM = "SHA-256";
      public static final String PBKDF2_WITH_HMAC_SHA_256_ALGORITHM = "PBKDF2WithHmacSHA256";
+     public static final byte[] AES_GCM_ADD = "2026-I-CC".getBytes();
      
      public static final int AES_CBC_IV_LENGTH = 16;
      public static final int AES_GCM_IV_LENGTH = 12;

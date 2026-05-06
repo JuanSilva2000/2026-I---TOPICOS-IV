@@ -30,14 +30,29 @@ public class RSACipherService {
         this.privatKey = kp.getPrivate();
     }
     
-    public String encrypt(String plainText){
-        String result = "";
+    public RSACipherService(PublicKey pubKey){
+        this.publicKey = pubKey;
+        this.privatKey = null;
+    }
+    
+     public RSACipherService(PrivateKey privatKey){
+        this.privatKey = privatKey;
+        this.publicKey = null;
+    }
+    
+    public byte[] encrypt(byte[] plainText){
+        if(publicKey == null) return null;
+        
+        
+        byte[] result = null;
         
         try {
             Cipher cipher = Cipher.getInstance(RSA_ALGORITHM);
             cipher.init(Cipher.ENCRYPT_MODE, this.publicKey);
-            byte[] encryptedText = cipher.doFinal(plainText.getBytes());
-            result = Base64.getEncoder().encodeToString(encryptedText);
+            //byte[] encryptedText = cipher.doFinal(plainText.getBytes());
+            byte[] encryptedText = cipher.doFinal(plainText);
+            //result = Base64.getEncoder().encodeToString(encryptedText);
+            result = encryptedText;
         } catch (NoSuchAlgorithmException ex) {
             System.getLogger(RSACipherService.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         } catch (NoSuchPaddingException ex) {
@@ -53,7 +68,16 @@ public class RSACipherService {
         return result;
     }
     
+    public String encrypt(String plainText){
+        byte[] encryptedText = encrypt(plainText.getBytes());
+        return Base64.getEncoder().encodeToString(encryptedText);
+    }
+    
     public String decrypt(String exryptedText) {
+        if(privatKey == null){
+            return null;
+        }
+        
         String result = "";
         
         try {

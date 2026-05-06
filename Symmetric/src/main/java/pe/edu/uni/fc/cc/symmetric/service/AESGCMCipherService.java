@@ -31,8 +31,8 @@ public class AESGCMCipherService {
         this.key = key;
     }
     
-    public String encrypt(String plainText, byte[] IV, byte[] aad) {
-        String result = "";
+    public byte[] encrypt(byte[] plainText, byte[] IV, byte[] aad) {
+        byte[] result = null;
         
         try {
             Cipher cipher = Cipher.getInstance(TRANSFORMATION_AES_GCM);
@@ -44,14 +44,16 @@ public class AESGCMCipherService {
                 cipher.updateAAD(aad);
             }
             
-            byte[] encrypted = cipher.doFinal(plainText.getBytes(StandardCharsets.UTF_8));
+            //byte[] encrypted = cipher.doFinal(plainText.getBytes(StandardCharsets.UTF_8));
+            byte[] encrypted = cipher.doFinal(plainText);
             
             byte[] ciphered = new byte[IV.length + encrypted.length];
             System.arraycopy(IV, 0, ciphered, 0, IV.length);
             System.arraycopy(encrypted, 0, ciphered, IV.length, encrypted.length);
             
-            result = Base64.getEncoder().encodeToString(ciphered);
-                   
+            //result = Base64.getEncoder().encodeToString(ciphered);
+            result = ciphered;  
+            
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException ex) {
             System.getLogger(AESGCMCipherService.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
@@ -59,10 +61,16 @@ public class AESGCMCipherService {
         return result;
     }
     
-    public String decrypt(String encryptedText, byte[] add){
-        String result = "";
+    public String encrypt(String plainText, byte[] iv, byte[] aad) {
+        byte[] ciphered= encrypt(plainText.getBytes(StandardCharsets.UTF_8), iv, aad);
+        return Base64.getEncoder().encodeToString(ciphered);
+    }
+    
+    public byte[] decrypt(byte[] encryptedText, byte[] add){
+        byte[] result = null;
         
-        byte[] input = Base64.getDecoder().decode(encryptedText);
+        //byte[] input = Base64.getDecoder().decode(encryptedText);
+        byte[] input = encryptedText;
         byte[] IV = new byte[AES_GCM_IV_LENGTH];
         byte[] cipherText = new byte[input.length - AES_GCM_IV_LENGTH];
         
@@ -80,7 +88,8 @@ public class AESGCMCipherService {
             }
             
             byte[] decrypted = cipher.doFinal(cipherText);
-            result = new String(decrypted, StandardCharsets.UTF_8);
+            //result = new String(decrypted, StandardCharsets.UTF_8);
+            result = decrypted;
             
             
         } catch (NoSuchAlgorithmException ex) {
@@ -97,6 +106,14 @@ public class AESGCMCipherService {
             System.getLogger(AESGCMCipherService.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
         
+        return result;
+    }
+
+    public String decrypt(String encryptedText, byte[] add){
+        String result = "";
+        byte[] input = Base64.getDecoder().decode(encryptedText);
+        byte[] decrypted = decrypt(input, add);
+        result = new String(decrypted, StandardCharsets.UTF_8);
         return result;
     }
 }
