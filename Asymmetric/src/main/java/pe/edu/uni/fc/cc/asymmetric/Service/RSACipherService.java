@@ -73,19 +73,21 @@ public class RSACipherService {
         return Base64.getEncoder().encodeToString(encryptedText);
     }
     
-    public String decrypt(String exryptedText) {
+    public byte[] decrypt(byte[] exryptedText) {
         if(privatKey == null){
             return null;
         }
         
-        String result = "";
+        byte[] result = null;
         
         try {
             Cipher cipher = Cipher.getInstance(RSA_ALGORITHM);
             cipher.init(Cipher.DECRYPT_MODE, this.privatKey);
-            byte[] decodeEncryptedText = Base64.getDecoder().decode(exryptedText);
+            //byte[] decodeEncryptedText = Base64.getDecoder().decode(exryptedText);
+            byte[] decodeEncryptedText = exryptedText;
             byte[] decyptedText = cipher.doFinal(decodeEncryptedText);
-            result = new String(decyptedText);
+            //result = new String(decyptedText);
+            result =decyptedText;
         } catch (NoSuchAlgorithmException ex) {
             System.getLogger(RSACipherService.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         } catch (NoSuchPaddingException ex) {
@@ -100,4 +102,11 @@ public class RSACipherService {
         
         return result;
     }
+    
+    public String decrypt(String exryptedText){
+        byte[] decodeEncryptedText = Base64.getDecoder().decode(exryptedText);
+        byte[] decryptedText = decrypt(decodeEncryptedText);
+        return new String(decryptedText);
+    }
+            
 }
