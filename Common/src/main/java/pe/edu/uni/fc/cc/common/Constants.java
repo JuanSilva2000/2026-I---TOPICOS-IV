@@ -4,6 +4,8 @@
  */
 package pe.edu.uni.fc.cc.common;
 
+import java.nio.file.Paths;
+
 /**
  *
  * @author JUAN
@@ -16,7 +18,14 @@ public class Constants {
      public static final String TRANSFORMATION_AES_GCM = "AES/GCM/NoPadding";
      public static final String SHA_256_ALGORITHM = "SHA-256";
      public static final String PBKDF2_WITH_HMAC_SHA_256_ALGORITHM = "PBKDF2WithHmacSHA256";
+     
      public static final byte[] AES_GCM_ADD = "2026-I-CC".getBytes();
+     
+     public static final String BCFIPS_PROVIDER = "BCFIPS";
+     
+     public static final String USER_HOME = System.getProperty("user.home");
+     public static final String USER_CD_FILENAME = "C:\\UNI\\Cursos\\CC0F7 - Topicos-de-Ciencia-de-la-Computacion-IV\\sem-9\\user-cd.crt";
+     public static final String USER_CD_FILENAME2 = Paths.get(USER_HOME, "user-cd.crt").toString();
      
      public static final int AES_CBC_IV_LENGTH = 16;
      public static final int AES_GCM_IV_LENGTH = 12;
