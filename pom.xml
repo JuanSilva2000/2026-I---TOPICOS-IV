@@ -13,6 +13,7 @@
         <module>Asymmetric</module>
         <module>DigitialEnvelope</module>
         <module>PKI</module>
+        <module>DigitalSignature</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
