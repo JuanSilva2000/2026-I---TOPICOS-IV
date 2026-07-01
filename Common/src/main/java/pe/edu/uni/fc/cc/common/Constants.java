@@ -22,6 +22,9 @@ public class Constants {
      public static final byte[] AES_GCM_ADD = "2026-I-CC".getBytes();
      
      public static final String BCFIPS_PROVIDER = "BCFIPS";
+     public static final String SUNPKCS11_PROVIDER = "SunPKCS11";
+     public static final String PKCS12_KEYSTORE_TYPE = "PKCS12";    
+     public static final String PKCS11_KEYSTORE_TYPE = "PKCS11";    
      
      public static final String USER_HOME = System.getProperty("user.home");
      public static final String USER_CD_FILENAME = "C:\\UNI\\Cursos\\CC0F7 - Topicos-de-Ciencia-de-la-Computacion-IV\\sem-9\\user-cd.crt";
