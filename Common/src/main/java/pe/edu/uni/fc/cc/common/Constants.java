@@ -16,6 +16,7 @@ public class Constants {
      public static final String RSA_ALGORITHM = "RSA";
      public static final String TRANSFORMATION_AES_CBC = "AES/CBC/PKCS5Padding";
      public static final String TRANSFORMATION_AES_GCM = "AES/GCM/NoPadding";
+     public static final String TRANSFORMATION_RSA = "RSA/ECB/PKCS1Padding";
      public static final String SHA_256_ALGORITHM = "SHA-256";
      public static final String PBKDF2_WITH_HMAC_SHA_256_ALGORITHM = "PBKDF2WithHmacSHA256";
      
